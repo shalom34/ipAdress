@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ip</title>
+</head>
+<body>
+	<div class="form">
+		<h5>Show your ip address with my program</h5>
+		<label id="iptext"></label>
+		<button onclick="show()">Show my ip</button>
+	</div>
+<script>
+
+	var iptextbox=document.getElementById("iptext");
+	function show(argument) {
+		iptextbox.style.display="block";
+		fetch('https://api.ipify.org')
+	.then((res)=>res.text())
+	.then(ip=>iptextbox.innerHTML=ip)
+	.catch(err=>console.log(err))
+	}
+	
+</script>
+
+<style type="text/css">
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+	body{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100vh;
+	}
+	.form{
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		height: 50%;
+		background: lavender;
+		border-radius: 7px;
+		box-shadow: 0px 0px 14px #ccc;
+	}
+	h5{
+		font-size: 1.3em;
+		text-align: center;
+		padding: 0.5em;
+		margin-bottom: 0.5em;
+	}
+	label{
+		font-size: 1em;
+		color: #2076FF;
+		animation: 2s show linear;
+		text-align: center;
+		padding: 1em;
+		display: none;
+	}
+	button{
+		width: 60%;
+		margin-left: 20%;
+		background: white;
+		border-radius: 25px;
+		border: none;
+		font-size: 1em;
+		color:  #2076FF;
+		box-shadow: 0px 0px 5px #ccc;
+		padding: 0.7em;
+	}
+	@keyframes show{
+		0%{
+			opacity: 0;
+		}
+		50%{
+			opacity: 0.5;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	@media (max-width: 490px) {
+  .form {
+   width: 100%;
+   height: 100%;
+  }
+}
+</style>
+</body>
+</html>
